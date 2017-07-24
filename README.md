@@ -26,6 +26,18 @@ First clone this project
 git clone https://github.com/revolution-messaging/revere-api-documentation-template.git && cd revere-api-documentation-template
 ```
 
+Then rename origin to `upstream`
+
+```
+git remote rename origin upstream
+```
+
+and add your documentation repo to `origin`
+
+```
+git remote add origin <your repo url>
+```
+
 A Dockerfile, and a docker-compose files are provided for setting up and running a development environment. If you're familiar with docker you can skim over the details.
 
 ## Setup & Installation
@@ -47,4 +59,30 @@ To build your documentation with docker run:
 
 ```
 docker run --rm -v $PWD:/usr/src/app/source -w /usr/src/app/source <docker app name from docker ps> bundle exec middleman build --clean
+```
+
+## Updating The Docs 
+
+This repo is to be kept up to date with the Slate documentation framework. To update an application document you merge this repo's changes with _your_ __master__ branch via 
+
+```
+git fetch upstream
+```
+
+then ensure master via
+
+```
+git checkout master
+````
+
+and finally 
+
+```
+git merge upstream/master
+```
+
+and once you are done you can push to origin via 
+
+```
+git push origin master
 ```
